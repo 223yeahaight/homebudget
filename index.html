@@ -1,0 +1,100 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Budget</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.7.570/build/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdn.jsdelivr.net/npm/pdfjs-dist@2.7.570/build/pdf.worker.min.js";
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <script src="script.js"></script>
+
+
+  <!-- <script>function displayData(){ alert('costam');}</script> -->
+  <div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Wydatki')">Wydatki</button>
+    <button class="tablinks" onclick="openTab(event, 'Dochody')">Dochody</button>
+    <button class="tablinks" onclick="openTab(event, 'Zakupy')">Zakupy</button>
+    <button class="tablinks" onclick="openTab(event, 'Miesiac')">Ten Miesiac</button>
+    <button class="tablinks" onclick="openTab(event, 'Oszczednosci');fetchData()">Oszczednosci Roczne</button>
+    <button class="tablinks" onclick="openTab(event, 'Paragony')">Paragony</button>
+  </div>
+
+  <!-- Tab content -->
+  <div id="Wydatki" class="tabcontent">
+    <h3>Wydatki</h3>
+    <form name="form1">
+      <label>Tytul: </label>
+      <input type="text" id="ex_title" class="wydatek" required><br><br>
+      <label>Kwota wydatku: </label>
+      <input type="number" id="ex_amount" class="wydatek" required><br><br>
+      <label>Jak czesto(w miesiach): </label>
+      <input type="number" id="ex_freq" class="wydatek" required><br><br>
+      <button type="submit" id="addexpense" class="btn btn-outline-dark">Dodaj</button>
+    </form>
+  </div>
+
+  <div id="Dochody" class="tabcontent">
+    <h3>Dochody</h3>
+    <form name="form2">
+      <label>Tytul:</label>
+      <input type="text" id="in_title" required><br><br>
+      <label>Kwota dochodu:</label>
+      <input type="number" id="in_amount" required><br><br>
+      <label>Jak czesto(w miesiach):</label>
+      <input type="number" id="in_freq" required><br><br>
+      <button type="submit" id="addincome" class="btn btn-outline-dark">Dodaj</button>
+    </form>
+  </div>
+
+
+  <div id="Miesiac" class="tabcontent">
+    <h3>Aktualny miesciac</h3>
+    <canvas id="monthgraph">
+      <script src="monthgraph.js"></script>
+    </canvas>
+
+  </div>
+
+  <div id="Oszczednosci" class="tabcontent">
+    <h3>Oszczednosci</h3>
+    <p>tu bedzie cos z oszczednosciami</p>
+    <label>twoj bilans w ciagu roku wynosi: </label>
+    <label id="savings"></label>
+    <canvas id="yeargraph">
+      <script src="yeargraph.js"></script>
+    </canvas>
+  </div>
+
+  <div id="Zakupy" class="tabcontent">
+    <h3>Zakupy</h3>
+    <p>Dodaj zakup:</p>
+    <form name="form3">
+      <label>Tytul: </label>
+      <input type="text" id="pu_title" class="wydatek" required><br><br>
+      <label>Kwota wydatku: </label>
+      <input type="number" id="pu_amount" class="wydatek" required><br><br>
+      <button type="submit" id="addpurchase" class="btn btn-outline-dark">Dodaj</button>
+    </form>
+  </div>
+
+  <div id="Paragony" class="tabcontent">
+    <a href="./scanner/index.html">
+      <button id="receiptbutton" class="btn btn-outline-dark">Dodaj paragon</button>
+    </a>
+  </div>
+
+</body>
+
+</html>
